@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: cyan;
+  --foreground: rgb(255, 0, 0);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: cyan;
+    --foreground: #ff0000;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
