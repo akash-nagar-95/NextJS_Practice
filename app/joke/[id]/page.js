@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import JokeCard from '@/components/JokeCard';
-// import Navbar from '@/components/Navbar';
 
 export default function JokePage() {
   const { id } = useParams();
@@ -45,7 +44,7 @@ export default function JokePage() {
   return (
     <>
         <div className="flex flex-col items-center justify-center min-h-screen">
-        <JokeCard joke={joke} />
+          <JokeCard joke={joke} />
         </div>
     </>
   );

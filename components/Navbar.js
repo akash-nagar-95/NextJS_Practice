@@ -1,19 +1,58 @@
-import React from 'react';
+'use client';
+
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import nextLogo from '@/public/next.svg'
+import Link from 'next/link';
+import nextJSLogo from '@/public/next.svg'
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    setIsLoggedIn( localStorage.getItem('isLoggedIn'));
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userEmail');
+    setIsLoggedIn(false);
+    router.push('/login');
+  };
+
   return (
-    <div className='bg-white h-10 items-center flex flex-row justify-between px-5' >
+    <div className='bg-blue-300 h-10 flex items-center flex-row justify-between px-5' >
       <div>
-        <Image src={nextLogo} alt='application logo' className='size-20' />
+        <Image src={nextJSLogo} alt='application logo' className='size-20' />
       </div>
 
-      <ul className='text-blue-600 flex flex-row gap-4 justify-center py-1 group cursor-pointer '>
-        <li className=' hover:text-xl hover:bg-blue-600 hover:text-black hover:underline' >Home</li>
-        <li className=' hover:text-xl hover:bg-blue-600 hover:text-black hover:underline' >About us</li>
-        <li className=' hover:text-xl hover:bg-blue-600 hover:text-black hover:underline' >Contact us</li>
-      </ul>
+      <nav className='text-blue-600 flex flex-row gap-2'>
+        <div className='overflow-hidden' >
+          <Link href='/' legacyBehavior>
+            <a className=' hover:text-white px-3 py-1 rounded transition-all duration-200 hover:scale-110 hover:underline'  >Home</a>
+          </Link>
+          <Link href='/about' legacyBehavior>
+            <a className=' hover:text-white px-3 py-1 rounded transition-all duration-200 hover:scale-110 hover:underline' >About us</a>
+          </Link>
+          <Link href='/contact' legacyBehavior>
+            <a className='hover:text-white px-3 py-1 rounded transition-all duration-200 hover:scale-110 hover:underline'>Contact us</a>
+          </Link>
+          <span>
+            {
+              isLoggedIn ? (
+                <Link href='/login' legacyBehavior >
+                  <a className=' hover:text-black px-3 py-1 rounded transition-all duration-200 hover:underline' onClick={handleLogout}>Log Out</a>
+                </Link>
+              ) : (
+                <Link href='/login' legacyBehavior >
+                  <a className=' hover:text-black px-3 py-1 rounded transition-all duration-200 hover:underline' >LogIn</a>
+                </Link>
+              )
+            }
+          </span>
+        </div>
+      </nav>
     </div>
   )
 }
