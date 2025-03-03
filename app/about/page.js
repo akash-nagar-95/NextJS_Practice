@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const page = () => {
@@ -11,6 +12,7 @@ const page = () => {
 
       <br />
       <p>quibusdam voluptas laudantium placeat, maiores sed atque laboriosam dolor neque molestiae architecto nulla ut. Eligendi adipisicing elit. Nemo qui culpa repudiandae, autem dolorum saepe labore reiciendis ea exercitationem fugiat. Nostrum magnam, assumenda eum aliquid corporis provident distinctio blanditiis cumque, vero amet, necessitatibus tempore veniam veritatis repellendus ad iure itaque! Mollitia excepturi explicabo debitis dicta quibusdam voluptas laudantium placeat, maiores sed atque laboriosam dolor neque molestiae architecto nulla ut. Eligendi?</p>
+      <Link href='/' className="mt-10 hover:underline text-blue-700 hover:text-blue-950" >Return to Home</Link>
 
     
       <p></p>
